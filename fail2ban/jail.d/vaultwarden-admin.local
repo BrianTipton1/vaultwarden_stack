@@ -1,0 +1,11 @@
+# path_f2b/jail.d/vaultwarden-admin.local
+
+[vaultwarden-admin]
+enabled = true
+port = 80,443
+filter = vaultwarden-admin
+action = iptables-allports[name=vaultwarden-admin, chain=FORWARD]
+logpath = /home/vault/vaultwarden_stack/logging/vaultwarden.log
+maxretry = 3
+bantime = 14400
+findtime = 14400

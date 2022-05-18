@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: always
+    env_file:
+      - /home/vault/vaultwarden_stack/vaultwarden/.env
+    volumes:
+      - vaultwarden_vol:/data/
+      - /home/vault/vaultwarden_stack/logging/:/logging
+
+  mariadb:
+    image: mariadb:10.7
+    container_name: mariadb
+    hostname: mariadb
+    restart: always
+    env_file:
+      - /home/vault/vaultwarden_stack/maria/.env
+    volumes:
+      - mariadb_vol:/var/lib/mysql
+      - /etc/localtime:/etc/localtime:ro
+
+  caddy:
+    image: caddy:2
+    container_name: caddy
+    restart: always
+    env_file:
+      - /home/vault/vaultwarden_stack/caddy/.env
+    ports:
+      - 80:80  
+      - 443:443
+    volumes:
+      - /home/vault/vaultwarden_stack/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - /home/vault/vaultwarden_stack/caddy/caddy-config:/config
+      - /home/vault/vaultwarden_stack/caddy/caddy-data:/data
+
+volumes:
+ vaultwarden_vol:
+ mariadb_vol:
+
