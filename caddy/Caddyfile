@@ -16,7 +16,7 @@
   encode gzip
 
   # Notifications redirected to the WebSocket server
-  reverse_proxy /notifications/hub vaultwarden:3012
+  reverse_proxy /SECURE_STRING/notifications/hub vaultwarden:3012
 
   # Proxy everything else to Rocket
   reverse_proxy vaultwarden:80 {
