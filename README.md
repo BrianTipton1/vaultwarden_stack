@@ -29,7 +29,7 @@ mkdir ~/.ssh && touch ~/.ssh/authorized_keys && chmod 700 ~/.ssh && chmod 600 ~/
 ### Docker/Fail2ban Setup
 - Install pre-reqs Command
 ```bash
-sudo dnf upgrade --refresh -y && sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo && sudo dnf install epel-release -y && sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin fail2ban unzip -y && sudo usermod -aG docker $USER && sudo systemctl enable docker && sudo reboot
+sudo dnf upgrade --refresh -y && sudo dnf config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo && sudo dnf install epel-release -y && sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin fail2ban git -y && sudo usermod -aG docker $USER && sudo systemctl enable docker && sudo reboot
 ```
 - After reboot clone below to home directory 
 ```bash
